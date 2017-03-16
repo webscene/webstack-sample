@@ -33,6 +33,7 @@ dependencies {
     compile "io.vertx:vertx-core:$VERTX_VER"
     compile "io.vertx:vertx-web:$VERTX_VER"
     compile "io.vertx:vertx-lang-kotlin:$VERTX_VER"
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 mainClassName = 'io.vertx.core.Launcher'

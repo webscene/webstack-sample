@@ -1,7 +1,7 @@
 package org.example.webstack.server
 
 /**
- * General HTTP status codes.
+ * General HTTP/S status codes.
  * @author Nick Apperley
  */
 enum class HttpStatus(val num: Int) {

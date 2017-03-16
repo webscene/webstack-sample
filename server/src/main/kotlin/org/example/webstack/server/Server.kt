@@ -3,7 +3,7 @@ package org.example.webstack.server
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.http.HttpServerOptions
 import io.vertx.ext.web.Router
-//import io.vertx.ext.web.handler.BodyHandler
+import io.vertx.ext.web.handler.BodyHandler
 import io.vertx.ext.web.handler.StaticHandler
 import io.vertx.kotlin.core.http.HttpServerOptions
 
@@ -33,20 +33,18 @@ class Server : AbstractVerticle() {
 
     private fun setupRoutes(router: Router) {
         router.route("/public/*").handler(StaticHandler.create("public"))
-        /*
-        router.route("/").handler { routingCtx ->
+        router.get("/").handler { routingCtx ->
             val resp = routingCtx.response()
 
             resp.statusCode = HttpStatus.OK.num
             resp.putHeader("content-type", ContentType.HTML.txt).end(createHomePage())
         }
-        router.route("/welcome").handler { routingCtx ->
+        router.get("/welcome").handler { routingCtx ->
             val resp = routingCtx.response()
 
             resp.statusCode = HttpStatus.OK.num
             resp.putHeader("content-type", ContentType.HTML.txt).end(createWelcomePage())
         }
-        */
         setupApiRoutes(router)
     }
 
@@ -57,7 +55,6 @@ class Server : AbstractVerticle() {
             resp.statusCode = HttpStatus.OK.num
             resp.putHeader("content-type", ContentType.PLAIN_TXT.txt).end("Server Status: Up")
         }
-        /*
         router.post("/api/greeting").handler(BodyHandler.create())
         router.post("/api/greeting").handler { routingCtx ->
             val resp = routingCtx.response()
@@ -66,7 +63,6 @@ class Server : AbstractVerticle() {
             resp.putHeader("content-type", ContentType.PLAIN_TXT.txt).end(
                     "Hello ${routingCtx.bodyAsJson.getString("name")}!")
         }
-         */
     }
 
     val HttpServerOptions.protocol
