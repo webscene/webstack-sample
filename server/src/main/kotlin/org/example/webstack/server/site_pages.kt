@@ -33,7 +33,7 @@ private fun fetchScriptSources(): Array<String> {
 
     inputStream?.use { input ->
         input.bufferedReader().forEachLine { line ->
-            if (line != "\n") tmp.add(line)
+            if (line != "\n") tmp += line
         }
     }
     return tmp.toTypedArray()

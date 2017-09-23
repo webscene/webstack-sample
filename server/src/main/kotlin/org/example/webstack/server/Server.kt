@@ -15,15 +15,12 @@ import io.vertx.kotlin.core.http.HttpServerOptions
 class Server : AbstractVerticle() {
     override fun start() {
         val router = Router.router(vertx)
-//        val keyStoreOptions = JksOptions(path = "config/server-keystore.jks", password = "wibble")
-//        val serverOptions = HttpServerOptions(port = 8080, host = "localhost", ssl = true,
-//                keyStoreOptions = keyStoreOptions)
-        val serverOptions = HttpServerOptions(port = 8080, host = "localhost")
+        val serverOptions = HttpServerOptions(port = 8080, host = "localhost", ssl = false)
 
         println("Starting server...")
         setupRoutes(router)
         // Must assign a request handler to the HTTP server otherwise an exception is thrown.
-        vertx.createHttpServer(serverOptions).requestHandler { router.accept(it) }.listen()
+        vertx.createHttpServer(serverOptions).requestHandler(router::accept).listen()
         println("Server Access: ${serverOptions.protocol.toLowerCase()}://${serverOptions.host}:${serverOptions.port}")
     }
 
