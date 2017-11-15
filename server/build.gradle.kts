@@ -1,7 +1,9 @@
+@file:Suppress("PropertyName")
+
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val VERTX_VER = "3.4.0"
+val VERTX_VER = "3.5.0"
 val MAIN_CLASS = "io.vertx.core.Launcher"
 val MAIN_VERTICLE = "org.example.webstack.server.Server"
 val WEBSCENE_SERVER_VER = "0.1-SNAPSHOT"
@@ -9,7 +11,7 @@ val WEBSCENE_SERVER_VER = "0.1-SNAPSHOT"
 
 buildscript {
     extra["shadow-ver"] = "2.0.1"
-    extra["kotlin-ver"] = "1.1.2-2"
+    extra["kotlin-ver"] = "1.1.60"
 
     repositories {
         jcenter()
@@ -24,7 +26,7 @@ buildscript {
 val KOTLIN_VER = "${extra["kotlin-ver"]}"
 
 plugins {
-    kotlin(module = "jvm", version = "1.1.2-2")
+    kotlin(module = "jvm", version = "1.1.60")
     application
 }
 
@@ -54,11 +56,11 @@ val run by tasks.getting(JavaExec::class) {
     val watcherAction = "./gradlew classes"
 
     args(
-        "run",
-        MAIN_VERTICLE,
-        "--redeploy=$watcherPath",
-        "--launcher-class=$MAIN_CLASS",
-        "--on-redeploy=$watcherAction"
+            "run",
+            MAIN_VERTICLE,
+            "--redeploy=$watcherPath",
+            "--launcher-class=$MAIN_CLASS",
+            "--on-redeploy=$watcherAction"
     )
 }
 val shadowJar by tasks.getting(ShadowJar::class) {

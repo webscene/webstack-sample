@@ -1,10 +1,12 @@
+@file:Suppress("PropertyName")
+
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 val WEBSCENE_CLIENT_VER = "0.1-SNAPSHOT"
 
 
 buildscript {
-    extra["kotlin-ver"] = "1.1.4-3"
+    extra["kotlin-ver"] = "1.1.60"
 
     repositories {
         jcenter()

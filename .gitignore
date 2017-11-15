@@ -68,6 +68,7 @@ hs_err_pid*
 /server/src/main/resources/public/
 /server/libs/
 /client/libs/
+*.iml
 
 # Additional files/directories to unignore.
 !/server/build.gradle.kts

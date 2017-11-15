@@ -1,4 +1,3 @@
-import java.net.URI
 
 allprojects {
     group = "org.webscene"
